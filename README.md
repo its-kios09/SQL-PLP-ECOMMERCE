@@ -55,7 +55,7 @@ Relational integrity (e.g. foreign keys and constraints) is enforced to ensure d
 
 ## 🛢 Diagram
 
-![Screenshot from 2025-04-13 19-53-06](https://github.com/user-attachments/assets/6d55bb16-87d6-473c-979c-7f6ab221a411)
+![Untitled](https://github.com/user-attachments/assets/dfdba017-94be-46d0-8a98-aeb39079155b)
 
 
 ## 📂 Project Structure

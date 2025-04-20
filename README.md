@@ -145,7 +145,7 @@ We welcome contributions from everyone! If you'd like to collaborate on this pro
 ### 1. Fork the repository
 Start by **forking** the repository to your GitHub account.
 
-- Go to the repository page: [SQL-PLP-BOOKSTORE](https://github.com/its-kios09/SQL-PLP-ECOMMERCE)
+- Go to the repository page: [SQL-PLP-ECOMMERCE](https://github.com/its-kios09/SQL-PLP-ECOMMERCE)
 - Click the **Fork** button (top right corner) to create a copy under your GitHub account.
 
 ### 2. Clone your fork

@@ -10,7 +10,7 @@ CREATE TABLE
     brand (
         brand_id INT AUTO_INCREMENT PRIMARY KEY,
         brand_name VARCHAR(100) NOT NULL,
-        brand_description TEXT,
+        description TEXT, -- Renamed to description for consistency
         founded_year INT,
         headquarters VARCHAR(100),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

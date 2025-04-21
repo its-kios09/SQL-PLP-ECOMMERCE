@@ -72,3 +72,30 @@ CREATE TABLE
         type_name VARCHAR(50) NOT NULL,
         description VARCHAR(255)
     );
+
+-- Product table
+CREATE TABLE
+    product (
+        product_id INT AUTO_INCREMENT PRIMARY KEY,
+        product_name VARCHAR(255) NOT NULL,
+        description TEXT,
+        brand_id INT,
+        category_id INT,
+        base_price DECIMAL(10, 2) NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        FOREIGN KEY (brand_id) REFERENCES brand (brand_id) ON DELETE SET NULL,
+        FOREIGN KEY (category_id) REFERENCES product_category (category_id) ON DELETE SET NULL
+    );
+
+-- Product image table
+CREATE TABLE
+    product_image (
+        image_id INT AUTO_INCREMENT PRIMARY KEY,
+        product_id INT NOT NULL,
+        image_url VARCHAR(255) NOT NULL,
+        alt_text VARCHAR(255),
+        is_primary BOOLEAN DEFAULT FALSE,
+        display_order INT DEFAULT 0,
+        FOREIGN KEY (product_id) REFERENCES product (product_id) ON DELETE CASCADE
+    );

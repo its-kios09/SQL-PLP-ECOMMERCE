@@ -29,3 +29,21 @@ CREATE TABLE
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         FOREIGN KEY (parent_category_id) REFERENCES product_category (category_id) ON DELETE SET NULL
     );
+
+-- Size category table
+CREATE TABLE
+    size_category (
+        size_category_id INT AUTO_INCREMENT PRIMARY KEY,
+        category_name VARCHAR(50) NOT NULL,
+        description VARCHAR(255)
+    );
+
+-- Size option table
+CREATE TABLE
+    size_option (
+        size_id INT AUTO_INCREMENT PRIMARY KEY,
+        size_category_id INT NOT NULL,
+        size_value VARCHAR(20) NOT NULL,
+        description VARCHAR(100),
+        FOREIGN KEY (size_category_id) REFERENCES size_category (size_category_id)
+    );

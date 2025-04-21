@@ -82,11 +82,14 @@ jobs:
           fi
 
       - name: 💾 Create database dump
+        id: create_dump
         if: github.ref == 'refs/heads/main'
         run: |
           mkdir -p db_dumps
           timestamp=$(date +%Y%m%d_%H%M%S)
           dump_file="db_dumps/kenya_ecommerce_$timestamp.sql"
+          echo "timestamp=$timestamp" >> $GITHUB_ENV
+          echo "dump_file=$dump_file" >> $GITHUB_ENV
 
           echo "📦 Creating dump: $dump_file"
           mysqldump -h 127.0.0.1 -u root -p${{ secrets.DB_PASSWORD || 'root' }} \
@@ -120,7 +123,7 @@ jobs:
           release_name: Database Dump ${{ github.sha }}
           body: |
             Automated release for database dump.
-            - Database dump file: `db_dumps/kenya_ecommerce_${{ steps.create_dump.outputs.timestamp }}.sql`
+            - Database dump file: `db_dumps/kenya_ecommerce_${{ env.timestamp }}.sql`
           draft: false
           prerelease: false
 
@@ -131,6 +134,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: db_dumps/kenya_ecommerce_${{ steps.create_dump.outputs.timestamp }}.sql
-          asset_name: kenya_ecommerce_${{ steps.create_dump.outputs.timestamp }}.sql
+          asset_path: ${{ env.dump_file }}
+          asset_name: kenya_ecommerce_${{ env.timestamp }}.sql
           asset_content_type: application/sql

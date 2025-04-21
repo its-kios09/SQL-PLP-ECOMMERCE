@@ -55,11 +55,11 @@ jobs:
             --batch --silent
           echo "✅ Database reset complete"
 
-      - name: 📦 Apply bookstore schema
+      - name: 📦 Apply kenyan ecommerce schema
         run: |
           echo "📦 Applying schema..."
           mysql -h 127.0.0.1 -u root -p${{ secrets.DB_PASSWORD || 'root' }} \
-            bookstore < ecommerce_schema.sql \
+            kenya_ecommerce < ecommerce_schema.sql \
             --batch --silent
           echo "✅ Schema applied successfully"
 
@@ -67,11 +67,8 @@ jobs:
         run: |
           echo "📋 Listing all tables:"
           mysql -h 127.0.0.1 -u root -p${{ secrets.DB_PASSWORD || 'root' }} \
-            bookstore -e "SHOW TABLES;" --table
+            kenya_ecommerce -e "SHOW TABLES;" --table
 
-          echo -e "\n🔍 Sample table structure:"
-          mysql -h 127.0.0.1 -u root -p${{ secrets.DB_PASSWORD || 'root' }} \
-            bookstore -e "DESCRIBE book; DESCRIBE author;" --table
 
       - name: 🚀 Execute test queries
         run: |
@@ -90,14 +87,14 @@ jobs:
         run: |
           mkdir -p db_dumps
           timestamp=$(date +%Y%m%d_%H%M%S)
-          dump_file="db_dumps/bookstore_$timestamp.sql"
+          dump_file="db_dumps/kenya_ecommerce_$timestamp.sql"
           
           echo "📦 Creating dump: $dump_file"
           mysqldump -h 127.0.0.1 -u root -p${{ secrets.DB_PASSWORD || 'root' }} \
             --no-tablespaces \
             --skip-comments \
             --compact \
-            bookstore > "$dump_file"
+            kenya_ecommerce > "$dump_file"
           
           # Create latest.sql symlink
           ln -sf "$dump_file" db_dumps/latest.sql

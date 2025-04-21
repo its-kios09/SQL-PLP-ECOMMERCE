@@ -1,6 +1,6 @@
 # 📚 E-commerce SQL Database Project
 
-[![CI - MySQL Schema Test](https://github.com/its-kios09/SQL-PLP-BOOKSTORE/actions/workflows/cicd.yml/badge.svg)](https://github.com/its-kios09/SQL-PLP-BOOKSTORE/actions)
+[![CI - MySQL Schema Test](https://github.com/its-kios09/SQL-PLP-ECOMMERCE/actions/workflows/cicd.yml/badge.svg)](https://github.com/its-kios09/SQL-PLP-ECOMMERCE/actions)
 
 ---
 

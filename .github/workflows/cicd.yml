@@ -59,7 +59,7 @@ jobs:
         run: |
           echo "📦 Applying schema..."
           mysql -h 127.0.0.1 -u root -p${{ secrets.DB_PASSWORD || 'root' }} \
-            bookstore < ecommerce_schema.sql \
+            kenya_ecommerce < ecommerce_schema.sql \
             --batch --silent
           echo "✅ Schema applied successfully"
 

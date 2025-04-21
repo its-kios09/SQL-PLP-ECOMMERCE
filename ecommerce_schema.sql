@@ -47,3 +47,28 @@ CREATE TABLE
         description VARCHAR(100),
         FOREIGN KEY (size_category_id) REFERENCES size_category (size_category_id)
     );
+
+-- Color table
+CREATE TABLE
+    color (
+        color_id INT AUTO_INCREMENT PRIMARY KEY,
+        color_name VARCHAR(50) NOT NULL,
+        hex_code VARCHAR(7),
+        description VARCHAR(100)
+    );
+
+-- Attribute category table
+CREATE TABLE
+    attribute_category (
+        attribute_category_id INT AUTO_INCREMENT PRIMARY KEY,
+        category_name VARCHAR(100) NOT NULL,
+        description TEXT
+    );
+
+-- Attribute type table
+CREATE TABLE
+    attribute_type (
+        attribute_type_id INT AUTO_INCREMENT PRIMARY KEY,
+        type_name VARCHAR(50) NOT NULL,
+        description VARCHAR(255)
+    );
